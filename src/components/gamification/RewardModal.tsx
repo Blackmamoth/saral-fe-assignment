@@ -28,6 +28,10 @@ const POSTS_PERIOD_EVENT = "Posts X times every Y period"
 const ONBOARDED_EVENT = "Is Onboarded"
 const FLAT_BONUS_REWARD = "Flat $X bonus"
 const COMMISSION_TIER_REWARD = "Upgrade Commission Tier"
+const modalActionButtonBaseClass =
+  "h-10 gap-2 rounded-[10px] px-4 py-2 text-base leading-[1.4] font-normal"
+const modalCancelButtonClass = `${modalActionButtonBaseClass} flex-1 !border !border-[#E3E3E3] bg-white !text-[#303030] hover:bg-[#FFF5FF] hover:!text-[#303030] focus-visible:!border-[#E3E3E3] focus-visible:!text-[#303030]`
+const modalPrimaryButtonClass = `${modalActionButtonBaseClass} flex-1 bg-[#F68DF6] text-white hover:bg-[#C530C5] disabled:bg-[#F68DF6] disabled:opacity-100`
 
 type EventDropdownMode =
   | "options"
@@ -256,7 +260,7 @@ function EventDropdown({
         {isEditing && (
           <div className="flex items-center gap-4 pt-2">
             <Button
-              className="h-10 flex-1 rounded-[10px] border border-[#E3E3E3] bg-white text-base font-normal text-[#303030] hover:bg-[#FFF5FF]"
+              className={modalCancelButtonClass}
               onClick={onCancel}
               type="button"
               variant="outline"
@@ -264,7 +268,7 @@ function EventDropdown({
               Cancel
             </Button>
             <Button
-              className="h-10 flex-1 rounded-[10px] bg-[#F68DF6] text-base font-normal text-white hover:bg-[#C530C5] disabled:bg-[#F68DF6] disabled:opacity-100"
+              className={modalPrimaryButtonClass}
               disabled={!canSave}
               onClick={onSave}
               type="button"
@@ -391,7 +395,7 @@ function RewardDropdown({
         {isFlatBonusEditor && (
           <div className="flex items-center gap-4">
             <Button
-              className="h-10 flex-1 rounded-[10px] border border-[#E3E3E3] bg-white text-base font-normal text-[#303030] hover:bg-[#FFF5FF]"
+              className={modalCancelButtonClass}
               onClick={onCancel}
               type="button"
               variant="outline"
@@ -399,7 +403,7 @@ function RewardDropdown({
               Cancel
             </Button>
             <Button
-              className="h-10 flex-1 rounded-[10px] bg-[#F68DF6] text-base font-normal text-white hover:bg-[#C530C5] disabled:bg-[#F68DF6] disabled:opacity-100"
+              className={modalPrimaryButtonClass}
               disabled={!canSave}
               onClick={onSave}
               type="button"
@@ -507,7 +511,7 @@ function TierSelectView({
       {selectedTier && (
         <div className="flex w-full items-center gap-4">
           <Button
-            className="h-10 flex-1 rounded-[10px] border border-[#E3E3E3] bg-white text-base font-normal text-[#303030] hover:bg-[#FFF5FF]"
+            className={modalCancelButtonClass}
             onClick={onBack}
             type="button"
             variant="outline"
@@ -515,7 +519,7 @@ function TierSelectView({
             Go Back
           </Button>
           <Button
-            className="h-10 flex-1 rounded-[10px] bg-[#C530C5] text-base font-normal text-white hover:bg-[#B628B6]"
+            className={`${modalActionButtonBaseClass} flex-1 bg-[#C530C5] text-white hover:bg-[#B628B6]`}
             onClick={onSave}
             type="button"
           >
@@ -1001,7 +1005,7 @@ export function RewardModal({
 
               <div className="flex w-full items-center gap-4">
                 <Button
-                  className="h-10 flex-1 rounded-[10px] border border-[#E3E3E3] bg-white text-base font-normal text-[#303030] hover:bg-[#FFF5FF]"
+                  className={modalCancelButtonClass}
                   onClick={onClose}
                   type="button"
                   variant="outline"
@@ -1026,7 +1030,7 @@ export function RewardModal({
                   )}
                   <Button
                     className={[
-                      "h-10 w-full rounded-[10px] text-base font-normal text-white disabled:bg-[#F68DF6] disabled:opacity-100",
+                      `${modalActionButtonBaseClass} w-full text-white disabled:bg-[#F68DF6] disabled:opacity-100`,
                       canCreate
                         ? "bg-[#C530C5] hover:bg-[#B628B6]"
                         : "bg-[#F68DF6]",

@@ -9,7 +9,7 @@ function HeroGridPanel() {
       aria-hidden="true"
       className="block aspect-[960/322] h-auto w-full select-none"
       draggable="false"
-      src="/hero-background.png"
+      src="/hero bg.png"
     />
   )
 }

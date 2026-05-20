@@ -1,4 +1,5 @@
 import type { ReactNode } from "react"
+import { Bell } from "lucide-react"
 
 import { sidebarItems } from "@/data/gamification"
 
@@ -91,20 +92,30 @@ function Sidebar() {
   )
 }
 
+function NotificationButton() {
+  return (
+    <button
+      aria-label="Notifications, 5 unread"
+      className="relative grid size-8 shrink-0 place-items-center rounded-[10px] text-[#4A4A4A] transition-colors duration-150 hover:bg-[#FDEFFD] focus-visible:ring-2 focus-visible:ring-[#C530C5]/30 focus-visible:outline-none"
+      type="button"
+    >
+      <Bell aria-hidden="true" className="size-6" strokeWidth={1.5} />
+      <span className="absolute -top-[3px] right-0 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#E51C00] px-[5px] text-[11px] leading-none font-medium text-[#FFFBFB]">
+        5
+      </span>
+    </button>
+  )
+}
+
 function TopNav() {
   return (
     <header className="hidden h-16 lg:flex lg:justify-center">
       <div className="flex h-full w-full max-w-[1228px] items-center justify-between">
-        <h1 className="font-heading text-lg leading-[1.4] font-semibold text-[#303030]">
+        <h1 className="m-0 inline-flex min-h-7 items-center pb-px text-lg leading-[1.6] font-semibold text-[#303030]">
           Gamification
         </h1>
         <div className="flex items-center gap-4">
-          <img
-            alt="Notifications"
-            className="h-8 w-[34px]"
-            draggable="false"
-            src="/icons/notification.svg"
-          />
+          <NotificationButton />
           <img
             alt="User avatar"
             className="size-8 rounded-full"
@@ -126,12 +137,7 @@ function MobileHeader() {
         draggable="false"
         src="/icons/sathi-logo.svg"
       />
-      <img
-        alt="Notifications"
-        className="h-8 w-[34px]"
-        draggable="false"
-        src="/icons/notification.svg"
-      />
+      <NotificationButton />
     </header>
   )
 }

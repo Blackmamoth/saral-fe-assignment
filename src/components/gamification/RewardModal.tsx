@@ -1,4 +1,4 @@
-import { CalendarDays, Check, ChevronDown, Pencil, X } from "lucide-react"
+import { CalendarDays, Check, ChevronDown, Pencil } from "lucide-react"
 import { type ReactNode, useEffect, useMemo, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -32,6 +32,8 @@ const modalActionButtonBaseClass =
   "h-10 gap-2 rounded-[10px] px-4 py-2 text-base leading-[1.4] font-normal"
 const modalCancelButtonClass = `${modalActionButtonBaseClass} flex-1 !border !border-[#E3E3E3] bg-white !text-[#303030] hover:bg-[#FFF5FF] hover:!text-[#303030] focus-visible:!border-[#E3E3E3] focus-visible:!text-[#303030]`
 const modalPrimaryButtonClass = `${modalActionButtonBaseClass} flex-1 bg-[#F68DF6] text-white hover:bg-[#C530C5] disabled:bg-[#F68DF6] disabled:opacity-100`
+const disabledActionTooltipClass =
+  "pointer-events-none absolute top-[calc(100%+38px)] left-1/2 z-40 flex min-h-[31px] w-max max-w-[323px] -translate-x-1/2 items-center justify-center rounded-lg bg-[#303030] px-3 py-1 text-center text-xs leading-[1.4] font-normal text-white opacity-0 shadow-[0_4px_10px_rgba(48,48,48,0.18)] transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
 
 type EventDropdownMode =
   | "options"
@@ -61,6 +63,41 @@ function formatReward(reward: Reward | null) {
     return `Upgrade to ${reward.tierName}`
   }
   return reward.type
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="size-6"
+      fill="none"
+      focusable="false"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#reward-modal-close-icon-clip)">
+        <path
+          d="M18 6L6 18"
+          stroke="#4A4A4A"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M6 6L18 18"
+          stroke="#4A4A4A"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
+        />
+      </g>
+      <defs>
+        <clipPath id="reward-modal-close-icon-clip">
+          <rect fill="white" height="24" width="24" />
+        </clipPath>
+      </defs>
+    </svg>
+  )
 }
 
 function RewardField({
@@ -267,14 +304,33 @@ function EventDropdown({
             >
               Cancel
             </Button>
-            <Button
-              className={modalPrimaryButtonClass}
-              disabled={!canSave}
-              onClick={onSave}
-              type="button"
+            <div
+              aria-describedby={
+                !canSave && isCrossEditor
+                  ? "cross-sales-save-tooltip"
+                  : undefined
+              }
+              className="group relative min-w-0 flex-1"
+              tabIndex={!canSave && isCrossEditor ? 0 : undefined}
             >
-              Save
-            </Button>
+              {!canSave && isCrossEditor && (
+                <div
+                  className={disabledActionTooltipClass}
+                  id="cross-sales-save-tooltip"
+                  role="tooltip"
+                >
+                  Enter the sales target amount to continue
+                </div>
+              )}
+              <Button
+                className={`${modalPrimaryButtonClass} w-full`}
+                disabled={!canSave}
+                onClick={onSave}
+                type="button"
+              >
+                Save
+              </Button>
+            </div>
           </div>
         )}
       </div>
@@ -402,14 +458,31 @@ function RewardDropdown({
             >
               Cancel
             </Button>
-            <Button
-              className={modalPrimaryButtonClass}
-              disabled={!canSave}
-              onClick={onSave}
-              type="button"
+            <div
+              aria-describedby={
+                !canSave ? "flat-bonus-save-tooltip" : undefined
+              }
+              className="group relative min-w-0 flex-1"
+              tabIndex={!canSave ? 0 : undefined}
             >
-              Save
-            </Button>
+              {!canSave && (
+                <div
+                  className={disabledActionTooltipClass}
+                  id="flat-bonus-save-tooltip"
+                  role="tooltip"
+                >
+                  Enter the bonus amount to continue
+                </div>
+              )}
+              <Button
+                className={`${modalPrimaryButtonClass} w-full`}
+                disabled={!canSave}
+                onClick={onSave}
+                type="button"
+              >
+                Save
+              </Button>
+            </div>
           </div>
         )}
       </div>
@@ -488,7 +561,7 @@ function TierSelectView({
             onClick={onClose}
             type="button"
           >
-            <X className="size-4" strokeWidth={2} />
+            <CloseIcon />
           </button>
         </div>
 
@@ -898,7 +971,7 @@ export function RewardModal({
                     onClick={onClose}
                     type="button"
                   >
-                    <X className="size-4" strokeWidth={2} />
+                    <CloseIcon />
                   </button>
                 </div>
 

@@ -148,7 +148,7 @@ function FeatureCards() {
 
 export function HeroStage({ onEnable }: { onEnable: () => void }) {
   return (
-    <section className="[container-type:inline-size] relative h-[904px] w-full max-w-[1228px] shrink-0 [--body-size:1.4583cqw] [--body-w:28.125cqw] [--card-gap:2.5cqw] [--card-h:20.8333cqw] [--card-w:30.4167cqw] [--cards-top:26.872cqw] [--copy-gap:0.8333cqw] [--copy-top:11.5625cqw] [--hero-h:42.3453cqw] [--icon-size:7.2917cqw] [--icon-top:2.2917cqw] [--title-size:1.6667cqw] [--wave-h:21.9792cqw] [--wave-left:-3.125cqw] [--wave-top:-6.0417cqw] [--wave-w:56.7708cqw] md:h-[464px] lg:h-[var(--hero-h)]">
+    <section className="[container-type:inline-size] relative h-full w-full max-w-[1228px] shrink-0 overflow-hidden [--body-size:1.4583cqw] [--body-w:28.125cqw] [--card-gap:2.5cqw] [--card-h:20.8333cqw] [--card-w:30.4167cqw] [--cards-top:26.872cqw] [--copy-gap:0.8333cqw] [--copy-top:11.5625cqw] [--hero-h:42.3453cqw] [--icon-size:7.2917cqw] [--icon-top:2.2917cqw] [--title-size:1.6667cqw] [--wave-h:21.9792cqw] [--wave-left:-3.125cqw] [--wave-top:-6.0417cqw] [--wave-w:56.7708cqw] md:h-[min(464px,100%)] lg:h-[min(var(--hero-h),100%)]">
       <div className="absolute top-0 left-0 w-full">
         <HeroGridPanel />
       </div>

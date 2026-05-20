@@ -11,7 +11,7 @@ export function App() {
 
   return (
     <AppShell>
-      <div className="flex w-full flex-col items-center">
+      <div className="flex h-full w-full flex-col items-center overflow-hidden">
         <HeroStage onEnable={() => setIsRewardModalOpen(true)} />
       </div>
 

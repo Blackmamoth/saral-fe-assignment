@@ -51,8 +51,8 @@ function RewardField({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-sans text-sm leading-[1.4] font-medium text-[#303030]">
-        {label} <span className="text-[#E02626]">*</span>
+      <label className="font-heading text-sm leading-[1.4] font-normal text-[#616161]">
+        {label} <span className="text-[#E51C00]">*</span>
       </label>
       <button
         className={[
@@ -306,7 +306,7 @@ function TimeBoundControl({
   return (
     <div className="relative flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="font-sans text-sm leading-[1.4] font-medium text-[#303030]">
+        <span className="font-heading text-sm leading-[1.4] font-medium text-[#303030]">
           Make the reward time bound
         </span>
         <button
@@ -400,7 +400,7 @@ function DatePickerPopover({
         >
           <CalendarArrowIcon direction="left" />
         </button>
-        <span className="font-sans text-sm font-medium text-[#303030]">
+        <span className="font-heading text-sm font-medium text-[#303030]">
           {monthFormatter.format(visibleMonth)}
         </span>
         <button
@@ -517,7 +517,7 @@ export function RewardModal({
           <div className="flex w-full flex-col gap-4">
             <div className="flex items-center justify-between">
               <h2
-                className="font-sans text-xl leading-[1.4] font-medium text-[#303030]"
+                className="font-heading text-xl leading-[1.4] font-medium text-[#303030]"
                 id="reward-modal-title"
               >
                 Create your reward system
@@ -671,20 +671,39 @@ export function RewardModal({
             >
               Cancel
             </Button>
-            <Button
-              className={[
-                "h-10 flex-1 rounded-[10px] text-base font-normal text-white disabled:bg-[#F68DF6] disabled:opacity-100",
-                canCreate ? "bg-[#C530C5] hover:bg-[#B628B6]" : "bg-[#F68DF6]",
-              ].join(" ")}
-              disabled={!canCreate}
-              onClick={() => {
-                if (!canCreate) return
-                onCreated()
-              }}
-              type="button"
+            <div
+              aria-describedby={
+                !canCreate ? "create-reward-tooltip" : undefined
+              }
+              className="group relative flex-1"
+              tabIndex={!canCreate ? 0 : undefined}
             >
-              Create Reward
-            </Button>
+              {!canCreate && (
+                <div
+                  className="pointer-events-none absolute top-[calc(100%+8px)] left-1/2 z-30 flex min-h-[33px] w-[min(323px,calc(100vw-48px))] -translate-x-1/2 items-center justify-center rounded-lg bg-[#303030] px-3 py-1 text-center text-[13px] leading-[1.4] font-normal text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  id="create-reward-tooltip"
+                  role="tooltip"
+                >
+                  Choose reward trigger and a reward to continue
+                </div>
+              )}
+              <Button
+                className={[
+                  "h-10 w-full rounded-[10px] text-base font-normal text-white disabled:bg-[#F68DF6] disabled:opacity-100",
+                  canCreate
+                    ? "bg-[#C530C5] hover:bg-[#B628B6]"
+                    : "bg-[#F68DF6]",
+                ].join(" ")}
+                disabled={!canCreate}
+                onClick={() => {
+                  if (!canCreate) return
+                  onCreated()
+                }}
+                type="button"
+              >
+                Create Reward
+              </Button>
+            </div>
           </div>
         </div>
       </div>

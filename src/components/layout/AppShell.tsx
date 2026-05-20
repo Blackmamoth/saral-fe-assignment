@@ -90,7 +90,7 @@ function TopNav() {
   return (
     <header className="hidden h-16 lg:flex lg:justify-center">
       <div className="flex h-full w-full max-w-[1228px] items-center justify-between">
-        <h1 className="font-sans text-lg leading-[1.4] font-semibold text-[#303030]">
+        <h1 className="font-heading text-lg leading-[1.4] font-semibold text-[#303030]">
           Gamification
         </h1>
         <div className="flex items-center gap-4">

@@ -9,7 +9,7 @@ function HeroGridPanel() {
       aria-hidden="true"
       className="block aspect-[960/322] h-auto w-full select-none"
       draggable="false"
-      src="/hero-background.svg"
+      src="/hero bg.png"
     />
   )
 }
@@ -18,7 +18,7 @@ function Intro({ onEnable }: { onEnable: () => void }) {
   return (
     <section className="flex w-full max-w-[354px] flex-col items-center gap-6 text-center">
       <div className="flex flex-col items-center gap-2">
-        <h2 className="font-sans text-[28px] leading-[1.4] font-semibold text-[#561056]">
+        <h2 className="font-heading text-[28px] leading-[1.4] font-semibold text-[#561056]">
           Gamify your Campaign
         </h2>
         <p className="text-base leading-[1.4] text-[#616161]">
@@ -129,14 +129,14 @@ function FeatureCards() {
         >
           <CardWave className="pointer-events-none absolute -top-[58px] -left-[30px] h-[211px] w-[545px] lg:top-[var(--wave-top)] lg:left-[var(--wave-left)] lg:h-[var(--wave-h)] lg:w-[var(--wave-w)]" />
           <SvgCrop
-            className="absolute top-[22px] left-1/2 size-[70px] -translate-x-1/2 lg:top-[var(--icon-top)] lg:size-[var(--icon-size)]"
+            className="absolute top-6 left-1/2 size-[70px] -translate-x-1/2 lg:top-[var(--icon-top)] lg:size-[var(--icon-size)]"
             viewBox={card.iconCrop}
           />
-          <div className="absolute inset-x-4 top-[111px] flex flex-col items-center gap-2 text-center lg:top-[var(--copy-top)] lg:gap-[var(--copy-gap)]">
-            <h3 className="font-sans text-base leading-[1.4] font-medium text-[#303030] lg:text-[length:var(--title-size)]">
+          <div className="absolute inset-x-4 top-[116px] flex flex-col items-center gap-2 text-center lg:top-[var(--copy-top)] lg:gap-[var(--copy-gap)]">
+            <h3 className="font-heading text-base leading-[1.4] font-medium text-[#303030]">
               {card.title}
             </h3>
-            <p className="max-w-[270px] text-sm leading-[1.4] text-[#616161] lg:max-w-[var(--body-w)] lg:text-[length:var(--body-size)]">
+            <p className="max-w-[232px] text-sm leading-[1.4] text-[#616161] lg:max-w-[var(--body-w)]">
               {card.body}
             </p>
           </div>
@@ -148,7 +148,7 @@ function FeatureCards() {
 
 export function HeroStage({ onEnable }: { onEnable: () => void }) {
   return (
-    <section className="[container-type:inline-size] relative h-full w-full max-w-[1228px] shrink-0 overflow-hidden [--body-size:1.4583cqw] [--body-w:28.125cqw] [--card-gap:2.5cqw] [--card-h:20.8333cqw] [--card-w:30.4167cqw] [--cards-top:26.872cqw] [--copy-gap:0.8333cqw] [--copy-top:11.5625cqw] [--hero-h:42.3453cqw] [--icon-size:7.2917cqw] [--icon-top:2.2917cqw] [--title-size:1.6667cqw] [--wave-h:21.9792cqw] [--wave-left:-3.125cqw] [--wave-top:-6.0417cqw] [--wave-w:56.7708cqw] md:h-[min(464px,100%)] lg:h-[min(var(--hero-h),100%)]">
+    <section className="[container-type:inline-size] relative h-full w-full max-w-[1228px] shrink-0 overflow-hidden [--body-w:24.1667cqw] [--card-gap:2.5cqw] [--card-h:20.8333cqw] [--card-w:30.4167cqw] [--cards-top:26.872cqw] [--copy-gap:0.8333cqw] [--copy-top:12.0833cqw] [--hero-h:42.3453cqw] [--icon-size:7.2917cqw] [--icon-top:2.5cqw] [--wave-h:21.9792cqw] [--wave-left:-3.125cqw] [--wave-top:-6.0417cqw] [--wave-w:56.7708cqw] md:h-[min(464px,100%)] lg:h-[min(var(--hero-h),100%)]">
       <div className="absolute top-0 left-0 w-full">
         <HeroGridPanel />
       </div>

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
 import { featureCards } from "@/data/gamification"
-import { SvgCrop } from "@/components/gamification/SvgCrop"
 
 function HeroGridPanel() {
   return (
@@ -128,9 +127,12 @@ function FeatureCards() {
           key={card.title}
         >
           <CardWave className="pointer-events-none absolute -top-[58px] -left-[30px] h-[211px] w-[545px] lg:top-[var(--wave-top)] lg:left-[var(--wave-left)] lg:h-[var(--wave-h)] lg:w-[var(--wave-w)]" />
-          <SvgCrop
+          <img
+            alt=""
+            aria-hidden="true"
             className="absolute top-6 left-1/2 size-[70px] -translate-x-1/2 lg:top-[var(--icon-top)] lg:size-[var(--icon-size)]"
-            viewBox={card.iconCrop}
+            draggable="false"
+            src={card.iconSrc}
           />
           <div className="absolute inset-x-4 top-[116px] flex flex-col items-center gap-2 text-center lg:top-[var(--copy-top)] lg:gap-[var(--copy-gap)]">
             <h3 className="font-heading text-base leading-[1.4] font-medium text-[#303030]">

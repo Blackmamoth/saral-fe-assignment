@@ -1003,9 +1003,9 @@ export function RewardModal({
                 </div>
               </div>
 
-              <div className="flex w-full items-center gap-4">
+              <div className="grid w-full grid-cols-2 items-center gap-4">
                 <Button
-                  className={modalCancelButtonClass}
+                  className={`${modalCancelButtonClass} w-full`}
                   onClick={onClose}
                   type="button"
                   variant="outline"
@@ -1016,7 +1016,7 @@ export function RewardModal({
                   aria-describedby={
                     !canCreate ? "create-reward-tooltip" : undefined
                   }
-                  className="group relative flex-1"
+                  className="group relative min-w-0"
                   tabIndex={!canCreate ? 0 : undefined}
                 >
                   {!canCreate && (

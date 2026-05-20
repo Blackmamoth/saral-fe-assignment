@@ -1,10 +1,11 @@
 import type { ReactNode } from "react"
 
 import { sidebarItems } from "@/data/gamification"
-import { SvgCrop } from "@/components/gamification/SvgCrop"
 
 const sidebarLinkBase =
   "group flex h-9 w-[156px] items-center gap-3 rounded-[10px] px-2 text-sm leading-[1.4] transition-colors duration-150 hover:bg-white/70 hover:text-[#9F269F] focus-visible:bg-white/70 focus-visible:text-[#9F269F] focus-visible:ring-2 focus-visible:ring-[#C530C5]/30 focus-visible:outline-none"
+const iconMotionClass =
+  "shrink-0 transition-transform duration-150 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5"
 
 function SettingsIcon() {
   return (
@@ -45,10 +46,11 @@ function Sidebar() {
   return (
     <aside className="hidden min-h-svh w-[188px] shrink-0 flex-col justify-between bg-[#FDEFFD] px-4 py-6 lg:flex">
       <div>
-        <SvgCrop
+        <img
+          alt="SaTHI"
           className="h-[34px] w-[140px]"
-          label="SaTHI"
-          viewBox="16 16 140 34"
+          draggable="false"
+          src="/icons/sathi-logo.svg"
         />
 
         <nav className="mt-[34px] flex flex-col gap-1">
@@ -64,9 +66,12 @@ function Sidebar() {
               href="#"
               key={item.label}
             >
-              <SvgCrop
-                className="size-5 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5"
-                viewBox={item.crop}
+              <img
+                alt=""
+                aria-hidden="true"
+                className={`size-5 ${iconMotionClass}`}
+                draggable="false"
+                src={item.iconSrc}
               />
               <span className="transition-transform duration-150 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5">
                 {item.label}
@@ -94,15 +99,17 @@ function TopNav() {
           Gamification
         </h1>
         <div className="flex items-center gap-4">
-          <SvgCrop
+          <img
+            alt="Notifications"
             className="h-8 w-[34px]"
-            label="Notifications"
-            viewBox="1218 16 30 32"
+            draggable="false"
+            src="/icons/notification.svg"
           />
-          <SvgCrop
+          <img
+            alt="User avatar"
             className="size-8 rounded-full"
-            label="User avatar"
-            viewBox="1262 16 32 32"
+            draggable="false"
+            src="/icons/user-avatar.svg"
           />
         </div>
       </div>
@@ -113,15 +120,17 @@ function TopNav() {
 function MobileHeader() {
   return (
     <header className="flex h-14 items-center justify-between bg-[#FDEFFD] px-4 lg:hidden">
-      <SvgCrop
+      <img
+        alt="SaTHI"
         className="h-[34px] w-[140px]"
-        label="SaTHI"
-        viewBox="16 16 140 34"
+        draggable="false"
+        src="/icons/sathi-logo.svg"
       />
-      <SvgCrop
+      <img
+        alt="Notifications"
         className="h-8 w-[34px]"
-        label="Notifications"
-        viewBox="1218 16 30 32"
+        draggable="false"
+        src="/icons/notification.svg"
       />
     </header>
   )

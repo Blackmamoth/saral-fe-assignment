@@ -37,9 +37,16 @@ export const eventOptions: RewardEventType[] = [
 ]
 
 export const rewardOptions: RewardType[] = [
-  "Flat $100 Bonus",
-  "10% commission",
-  "Free product",
+  "Flat $X bonus",
+  "Upgrade Commission Tier",
+]
+
+export const commissionTierOptions = [
+  "Bronze Partner",
+  "Silver Partner",
+  "Gold Partner",
+  "Platinum Partner",
+  "Elite Partner",
 ]
 
 export const durationOptions: EventDuration[] = [

@@ -3,7 +3,13 @@ export type RewardEventType =
   | "Posts X times every Y period"
   | "Is Onboarded"
 
-export type RewardType = "Flat $100 Bonus" | "10% commission" | "Free product"
+export type RewardType = "Flat $X bonus" | "Upgrade Commission Tier"
+
+export type Reward = {
+  amount?: string
+  tierName?: string
+  type: RewardType
+}
 
 export type EventDuration =
   | "14 days"
